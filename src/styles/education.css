@@ -1,0 +1,292 @@
+.edu-section {
+  --edu-progress: 0%;
+
+  background:
+    radial-gradient(
+      ellipse at 90% 25%,
+      rgba(125, 165, 245, 0.16),
+      transparent 48%
+    ),
+    linear-gradient(
+      135deg,
+      #edf2fa 0%,
+      #eaf0fa 55%,
+      #f5f8fd 100%
+    );
+}
+
+.edu-rise {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+
+  transition:
+    opacity 750ms ease,
+    transform 1000ms
+      cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: var(--edu-delay, 0ms);
+}
+
+.edu-motion-ready
+[data-edu-reveal]:not(.is-visible)
+> .edu-rise {
+  opacity: 0;
+  transform: translate3d(0, 50px, 0);
+}
+
+.edu-title-mask {
+  display: block;
+  overflow: hidden;
+
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.edu-motion-ready
+.edu-title-mask:not(.is-visible)
+> .edu-rise {
+  opacity: 0;
+  transform: translate3d(0, 110%, 0);
+}
+
+.edu-timeline {
+  position: relative;
+}
+
+.edu-timeline-track {
+  position: absolute;
+  left: 9px;
+  top: 35px;
+  bottom: 35px;
+
+  width: 2px;
+  background: #cbd7e9;
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.edu-timeline-fill {
+  width: 100%;
+  height: var(--edu-progress);
+
+  background: #455ce9;
+  border-radius: inherit;
+
+  transition: height 100ms linear;
+}
+
+.edu-entry {
+  position: relative;
+  padding-left: 42px;
+
+  border-bottom: 1px solid #c7d4e6;
+}
+
+.edu-entry:first-of-type {
+  border-top: 1px solid #c7d4e6;
+}
+
+.edu-entry-button {
+  width: 100%;
+  min-height: 150px;
+
+  cursor: pointer;
+  background: transparent;
+
+  transition: padding 350ms ease;
+}
+
+.edu-entry-button:hover {
+  padding-left: 6px;
+}
+
+.edu-marker {
+  position: absolute;
+  z-index: 2;
+
+  top: 33px;
+  left: 1px;
+
+  width: 18px;
+  height: 18px;
+
+  background: #edf2fa;
+  border: 2px solid #9fb5d7;
+  border-radius: 50%;
+
+  transition:
+    background-color 400ms ease,
+    border-color 400ms ease,
+    box-shadow 400ms ease,
+    transform 400ms ease;
+}
+
+.edu-entry:hover .edu-marker,
+.edu-entry.is-open .edu-marker {
+  background: #455ce9;
+  border-color: #455ce9;
+
+  box-shadow:
+    0 0 0 6px rgba(69, 92, 233, 0.12);
+
+  transform: scale(1.05);
+}
+
+.edu-entry-title {
+  transition:
+    color 350ms ease,
+    transform 450ms
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.edu-entry-button:hover .edu-entry-title,
+.edu-entry.is-open .edu-entry-title {
+  color: #455ce9;
+}
+
+.edu-entry-button:hover .edu-entry-title {
+  transform: translateX(4px);
+}
+
+.edu-toggle-icon {
+  transition:
+    border-color 350ms ease,
+    background-color 350ms ease,
+    color 350ms ease;
+}
+
+.edu-entry-button:hover .edu-toggle-icon,
+.edu-entry.is-open .edu-toggle-icon {
+  background: #455ce9;
+  border-color: #455ce9;
+  color: white;
+}
+
+.edu-plus {
+  display: block;
+
+  transition: transform 450ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.edu-plus.is-open {
+  transform: rotate(45deg);
+}
+
+.edu-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+
+  opacity: 0;
+
+  transition:
+    grid-template-rows 550ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 350ms ease;
+}
+
+.edu-detail.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.edu-detail-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.edu-decoration {
+  display: inline-block;
+
+  animation: edu-arrow-float
+    5s ease-in-out infinite;
+}
+
+@keyframes edu-arrow-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+.edu-work-link {
+  cursor: pointer;
+}
+
+.edu-work-arrow {
+  transition:
+    transform 450ms
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 350ms ease;
+}
+
+.edu-work-link:hover .edu-work-arrow,
+.edu-work-link:focus-visible .edu-work-arrow {
+  transform:
+    translate(3px, -3px)
+    scale(1.1);
+
+  background: #253ec7;
+}
+
+.edu-entry-button:focus-visible,
+.edu-work-link:focus-visible {
+  outline: 2px solid #455ce9;
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .edu-entry {
+    padding-left: 34px;
+  }
+
+  .edu-entry-button {
+    min-height: 135px;
+  }
+
+  .edu-entry-title {
+    font-size: 1.25rem;
+  }
+
+  .edu-marker {
+    width: 16px;
+    height: 16px;
+    left: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edu-rise {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .edu-timeline-fill {
+    height: 100%;
+    transition: none;
+  }
+
+  .edu-entry-button,
+  .edu-marker,
+  .edu-entry-title,
+  .edu-toggle-icon,
+  .edu-plus,
+  .edu-detail,
+  .edu-work-arrow {
+    transition: none !important;
+  }
+
+  .edu-decoration {
+    animation: none !important;
+  }
+
+  .edu-entry-button:hover,
+  .edu-entry-button:hover .edu-entry-title {
+    transform: none;
+  }
+}

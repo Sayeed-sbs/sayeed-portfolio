@@ -1,0 +1,141 @@
+html {
+  scroll-padding-top: 88px;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+}
+
+body {
+  isolation: isolate;
+}
+
+main,
+section,
+article {
+  min-width: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+#about,
+#skills,
+#education,
+#projects,
+#contact {
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 1023px) {
+
+  #skills .skills-feature {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #skills .skills-tile {
+    min-width: 0;
+  }
+
+  #education .edu-timeline,
+  #education .edu-entry {
+    min-width: 0;
+  }
+
+  #projects .projects-cover img {
+    object-position: center top;
+  }
+
+  #contact .contact-social {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 639px) {
+
+  #skills h2,
+  #education h2,
+  #projects h2,
+  #contact h2 {
+    font-size: clamp(
+      3rem,
+      12vw,
+      4.2rem
+    );
+
+    line-height: 1.04;
+    letter-spacing: -0.07em;
+  }
+
+  #skills .skills-tile {
+    min-height: 105px;
+    padding: 14px;
+  }
+
+  #skills .skills-tile-arrow {
+    right: 10px;
+    top: 10px;
+  }
+
+  #education .edu-entry-button {
+    gap: 12px;
+  }
+
+  #education .edu-entry-title {
+    overflow-wrap: break-word;
+  }
+
+  #projects .projects-cover {
+    aspect-ratio: 1.45 / 1;
+  }
+
+  #projects .projects-cover img {
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  #contact .contact-orb {
+    width: min(75vw, 280px);
+    max-width: 100%;
+  }
+
+  #contact .contact-social {
+    min-height: 135px;
+  }
+
+  #contact .contact-social-name {
+    overflow-wrap: anywhere;
+  }
+
+  #contact .contact-detail-link {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 359px) {
+
+  #skills h2,
+  #education h2,
+  #projects h2,
+  #contact h2 {
+    font-size: 2.7rem;
+  }
+
+  #skills .skills-tile {
+    padding: 11px;
+  }
+
+  #contact .contact-social {
+    padding: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
